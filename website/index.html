@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playwright Automation Test Site - Tabbed Interface</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <h1 class="brand-title">TabAutomation Pro</h1>
+          <p class="brand-subtitle">Playwright Test Automation Demo Application</p>
+        </div>
+      </div>
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span id="active-tab-status" data-testid="active-tab-status">Active: Dashboard</span>
+      </div>
+    </header>
+
+    <!-- Main Card with Tab Navigation -->
+    <main class="card">
+      <!-- Tabs Navigation -->
+      <nav class="tabs-nav" role="tablist" aria-label="System Navigation">
+        <button
+          id="tab-dashboard"
+          class="tab-btn active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-dashboard"
+          data-testid="tab-dashboard"
+          data-tab="dashboard"
+        >
+          <span class="tab-icon">📊</span>
+          <span class="tab-label">Dashboard</span>
+          <span class="tab-badge" id="dashboard-badge">Live</span>
+        </button>
+
+        <button
+          id="tab-analytics"
+          class="tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-analytics"
+          data-testid="tab-analytics"
+          data-tab="analytics"
+        >
+          <span class="tab-icon">📈</span>
+          <span class="tab-label">Analytics</span>
+          <span class="tab-badge info">Updated</span>
+        </button>
+
+        <button
+          id="tab-settings"
+          class="tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-settings"
+          data-testid="tab-settings"
+          data-tab="settings"
+        >
+          <span class="tab-icon">⚙️</span>
+          <span class="tab-label">Settings</span>
+          <span class="tab-badge neutral">v2.4</span>
+        </button>
+      </nav>
+
+      <!-- Tab Panels -->
+      <div class="tab-panels">
+        <!-- Panel 1: Dashboard -->
+        <section
+          id="panel-dashboard"
+          class="tab-panel active"
+          role="tabpanel"
+          aria-labelledby="tab-dashboard"
+          data-testid="panel-dashboard"
+        >
+          <div class="panel-header">
+            <h2 id="dashboard-heading">System Overview & Activity</h2>
+            <p class="panel-desc">Real-time metrics and system health indicators.</p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-title">Automated Tests</span>
+              <span class="metric-value" id="val-tests">1,420</span>
+              <span class="metric-trend positive">↑ 12.5% vs last run</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-title">Success Rate</span>
+              <span class="metric-value" id="val-success">99.8%</span>
+              <span class="metric-trend positive">↑ 0.4% optimal</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-title">Avg Execution Time</span>
+              <span class="metric-value" id="val-time">1.24s</span>
+              <span class="metric-trend positive">↓ 150ms faster</span>
+            </div>
+          </div>
+
+          <div class="activity-box">
+            <h3>Recent Event Log</h3>
+            <ul class="activity-list">
+              <li><span class="timestamp">10:42:01</span> Test suite initialized on Chromium engine</li>
+              <li><span class="timestamp">10:42:05</span> Tab 1 (Dashboard) loaded successfully</li>
+              <li><span class="timestamp">10:42:08</span> Telemetry sync established</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Panel 2: Analytics -->
+        <section
+          id="panel-analytics"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-analytics"
+          data-testid="panel-analytics"
+          hidden
+        >
+          <div class="panel-header">
+            <h2 id="analytics-heading">Performance Analytics & Insights</h2>
+            <p class="panel-desc">Detailed breakdown of browser performance and load speeds.</p>
+          </div>
+
+          <div class="analytics-bars">
+            <div class="bar-group">
+              <div class="bar-label">
+                <span>DOM Content Loaded</span>
+                <strong>180ms</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 25%;"></div></div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label">
+                <span>First Contentful Paint (FCP)</span>
+                <strong>320ms</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 45%;"></div></div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label">
+                <span>Playwright Action Latency</span>
+                <strong>42ms</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill highlight" style="width: 15%;"></div></div>
+            </div>
+          </div>
+
+          <div class="info-callout">
+            <span class="callout-icon">💡</span>
+            <div>
+              <strong>Insight:</strong> Tab switching responsiveness is under 16ms (60 FPS verified).
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 3: Settings -->
+        <section
+          id="panel-settings"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-settings"
+          data-testid="panel-settings"
+          hidden
+        >
+          <div class="panel-header">
+            <h2 id="settings-heading">Automation & Environment Settings</h2>
+            <p class="panel-desc">Configure automation preferences, screenshot captures, and timeouts.</p>
+          </div>
+
+          <div class="settings-list">
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-name">Auto Capture Screenshots</span>
+                <span class="setting-subtext">Automatically take snapshots when tabs are clicked</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggle-screenshots" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-name">Headless Mode Testing</span>
+                <span class="setting-subtext">Run browser instances in the background</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggle-headless" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-name">Execution Timeout (seconds)</span>
+                <span class="setting-subtext">Max wait duration before test failure</span>
+              </div>
+              <select id="timeout-select" class="custom-select" data-testid="timeout-select">
+                <option value="15">15 seconds</option>
+                <option value="30" selected>30 seconds</option>
+                <option value="60">60 seconds</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="btn-save-settings" class="btn-primary" data-testid="btn-save-settings">Save Preferences</button>
+          <span id="save-status" class="save-status" data-testid="save-status"></span>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Playwright Python Automation Ready • Target: <span id="click-counter">0</span> tab clicks recorded</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
