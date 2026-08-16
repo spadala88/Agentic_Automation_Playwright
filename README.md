@@ -63,7 +63,8 @@ The Antigravity CLI (`agy`) allows you to run this automation workflow in a full
 ### Step 1: Open the Project in `agy` CLI
 Navigate to the project root and launch `agy`:
 ```powershell
-cd c:\Users\sande\Documents\antigravity\mysterious-galileo
+cd c:\Users\sande\Documents\antigravity\Agentic_Automation_Playwright
+
 agy
 ```
 
